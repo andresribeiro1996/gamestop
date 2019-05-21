@@ -1,16 +1,41 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, SafeAreaView, ScrollView, Dimensions, paragra } from 'react-native';
 import {createDrawerNavigator, DrawerItems} from 'react-navigation';
+import Login from './screens/LoginScreen';
 import HomeScreen from './screens/sideMenu/HomeScreen';
 import SettingScreen from './screens/sideMenu/SettingScreen';
 import ProfileScreen from './screens/sideMenu/ProfileScreen';
 import GameListScreen from './screens/sideMenu/GameListScreen';
 import SearchGameScreen from './screens/sideMenu/SearchGameScreen';
+import LogoutScreen from './screens/sideMenu/LogoutScreen';
 
 export default class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { 
+      isLoggedIn: false
+    };
+
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+  }
+
+  handleLoginClick() {
+    this.setState({isLoggedIn: true});
+  }
+
+  handleLogoutClick() {
+    this.setState({isLoggedIn: false});
+  }
+
   render() {
+    const { isLoggedIn } = this.state;
+
     return (
-      <AppDrawerNavigator />
+      <React.Fragment>
+        {isLoggedIn ? <AppDrawerNavigator /> : <Login login={this.handleLoginClick} />}
+      </React.Fragment>
     );
   }
 }
@@ -41,11 +66,12 @@ const CustomDrawerCompoment = (props) => (
 );
 
 const AppDrawerNavigator = createDrawerNavigator({
-  Home:HomeScreen,
+  Home: HomeScreen,
   Profile:ProfileScreen,
   GameList: GameListScreen,
   SearchGame: SearchGameScreen,
   Settings:SettingScreen,
+  Logout: LogoutScreen
 }, {
   contentComponent: CustomDrawerCompoment,
   contentOptions: {

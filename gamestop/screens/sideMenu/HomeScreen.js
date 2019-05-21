@@ -4,6 +4,10 @@ import {Header, Left, Right, Icon, Body} from 'native-base';
 
 class HomeScreen extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     static navigationOptions = {
         drawerIcon : ({tintColor}) => (
             <Icon name="home" style={{ fontSize: 24, color: tintColor}}/>
@@ -24,7 +28,7 @@ class HomeScreen extends Component {
                 </Header>
 
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}> 
-                    <Text>HomeScreen</Text>
+                    <Text>{this.props.screenProps.isLoggedIn}</Text>
                 </View>
             </View>
         );
