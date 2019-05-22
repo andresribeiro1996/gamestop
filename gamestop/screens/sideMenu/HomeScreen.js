@@ -13,6 +13,7 @@ class HomeScreen extends Component {
             <Icon name="home" style={{ fontSize: 24, color: tintColor}}/>
         )
     }
+    
     render(){
         return(
             <View style={styles.container}>
@@ -28,7 +29,8 @@ class HomeScreen extends Component {
                 </Header>
 
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}> 
-                    <Text>{this.props.screenProps.isLoggedIn}</Text>
+                    {/* <Text>{this.props.screenProps.isLoggedIn}</Text> */}
+                    oi
                 </View>
             </View>
         );
