@@ -9,6 +9,7 @@ class HomeScreen extends Component {
             <Icon name="home" style={{ fontSize: 24, color: tintColor}}/>
         )
     }
+    
     render(){
         return(
             <View style={styles.container}>
